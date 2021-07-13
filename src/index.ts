@@ -1,8 +1,8 @@
 import { fcntl, F_SETLK, F_WRLCK, SEEK_SET } from 'posix-lock';
 import { openSync, constants, ftruncateSync, writeSync } from 'fs';
-import process from 'process';
+import process = require('process');
 import { kebabCase } from 'identifier-cases';
-import assert from 'assert';
+import assert = require('assert');
 import { isAbsolute, join } from 'path';
 const { O_WRONLY, O_CREAT } = constants;
 const XDG_RUNTIME_DIR = process.env['XDG_RUNTIME_DIR'];

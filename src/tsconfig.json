@@ -4,12 +4,6 @@
         "composite": true,
         "rootDir": ".",
         "outDir": "../build",
-        "baseUrl": ".",
-        "paths": {
-            "#*": [
-                "./*"
-            ]
-        }
     },
     "include": [
         "./**/*",

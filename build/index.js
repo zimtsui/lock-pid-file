@@ -1,26 +1,30 @@
-import { fcntl, F_SETLK, F_WRLCK, SEEK_SET } from 'posix-lock';
-import { openSync, constants, ftruncateSync, writeSync } from 'fs';
-import process from 'process';
-import { kebabCase } from 'identifier-cases';
-import assert from 'assert';
-import { isAbsolute, join } from 'path';
-const { O_WRONLY, O_CREAT } = constants;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.lockPidFile = void 0;
+const posix_lock_1 = require("posix-lock");
+const fs_1 = require("fs");
+const process = require("process");
+const identifier_cases_1 = require("identifier-cases");
+const assert = require("assert");
+const path_1 = require("path");
+const { O_WRONLY, O_CREAT } = fs_1.constants;
 const XDG_RUNTIME_DIR = process.env['XDG_RUNTIME_DIR'];
 assert(XDG_RUNTIME_DIR);
-assert(isAbsolute(XDG_RUNTIME_DIR));
-export function lockPidFile(appName) {
-    assert(kebabCase.test(appName));
-    const pidFilePath = join(XDG_RUNTIME_DIR, `${appName}.pid`);
-    const fd = openSync(pidFilePath, O_WRONLY | O_CREAT, 0o777);
-    fcntl(fd, F_SETLK, {
-        l_type: F_WRLCK,
-        l_whence: SEEK_SET,
+assert(path_1.isAbsolute(XDG_RUNTIME_DIR));
+function lockPidFile(appName) {
+    assert(identifier_cases_1.kebabCase.test(appName));
+    const pidFilePath = path_1.join(XDG_RUNTIME_DIR, `${appName}.pid`);
+    const fd = fs_1.openSync(pidFilePath, O_WRONLY | O_CREAT, 0o777);
+    posix_lock_1.fcntl(fd, posix_lock_1.F_SETLK, {
+        l_type: posix_lock_1.F_WRLCK,
+        l_whence: posix_lock_1.SEEK_SET,
         l_start: 0,
         l_len: 0,
         l_pid: 0,
     });
-    ftruncateSync(fd, 0);
-    writeSync(fd, Buffer.from(`${process.pid}\n`));
+    fs_1.ftruncateSync(fd, 0);
+    fs_1.writeSync(fd, Buffer.from(`${process.pid}\n`));
 }
-export default lockPidFile;
+exports.lockPidFile = lockPidFile;
+exports.default = lockPidFile;
 //# sourceMappingURL=index.js.map
