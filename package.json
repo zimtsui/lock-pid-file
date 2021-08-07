@@ -15,6 +15,10 @@
     "license": "MIT",
     "dependencies": {
         "@types/node": "^14.17.5",
-        "identifier-cases": "https://gitee.com/zimtsui/identifier-cases.git"
+        "identifier-cases": "github:zimtsui/identifier-cases",
+        "node-addon-api": "^4.0.0"
+    },
+    "devDependencies": {
+        "node-gyp": "^8.1.0"
     }
 }

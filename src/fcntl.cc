@@ -9,6 +9,9 @@ Number Fcntl(const CallbackInfo& info) {
 
     int fd = (int64_t)info[0].As<Number>();
     int cmd = (int64_t)info[1].As<Number>();
+    if (cmd != F_SETLK && cmd != F_SETLKW && cmd != F_GETLK)
+        throw Error::New(env, "Only POSIX advisory record locking is supported.");
+
     flock lock;
     lock.l_type = (int64_t)info[2].As<Object>().Get("l_type").As<Number>();
     lock.l_whence = (int64_t)info[2].As<Object>().Get("l_whence").As<Number>();
