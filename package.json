@@ -2,18 +2,19 @@
     "name": "lock-pid-file",
     "version": "0.0.1",
     "description": "",
-    "main": "./build/index.js",
-    "types": "./build/index.d.ts",
+    "main": "./build/ts/index.js",
+    "types": "./build/ts/index.d.ts",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "tsc -b ./src/tsconfig.json"
+        "build": "npm run build-c && npm run build-ts",
+        "build-c": "node-gyp configure && node-gyp build && cp -f ./types/fcntl.d.ts ./build/Release/fcntl.d.ts",
+        "build-ts": "tsc -b ./src/tsconfig.json",
+        "install": "npm run build-c"
     },
     "author": "Zim",
     "license": "MIT",
     "dependencies": {
         "@types/node": "^14.17.5",
-        "identifier-cases": "https://gitee.com/zimtsui/identifier-cases.git",
-        "posix-lock": "https://gitee.com/zimtsui/posix-lock.git"
-    },
-    "devDependencies": {}
+        "identifier-cases": "https://gitee.com/zimtsui/identifier-cases.git"
+    }
 }

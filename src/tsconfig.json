@@ -3,7 +3,7 @@
     "compilerOptions": {
         "composite": true,
         "rootDir": ".",
-        "outDir": "../build",
+        "outDir": "../build/ts",
     },
     "include": [
         "./**/*",

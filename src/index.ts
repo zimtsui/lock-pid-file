@@ -1,4 +1,4 @@
-import { fcntl, F_SETLK, F_WRLCK, SEEK_SET } from 'posix-lock';
+import { fcntl, F_SETLK, F_WRLCK, SEEK_SET } from '../build/Release/fcntl';
 import { openSync, constants, ftruncateSync, writeSync } from 'fs';
 import process = require('process');
 import { kebabCase } from 'identifier-cases';
