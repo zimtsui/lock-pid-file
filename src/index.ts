@@ -1,7 +1,7 @@
 import { fcntl, F_SETLK, F_WRLCK, SEEK_SET } from '../build/Release/fcntl';
 import { openSync, constants, ftruncateSync, writeSync } from 'fs';
 import process = require('process');
-import { kebabCase } from 'identifier-cases';
+import { kebabCase } from '@zimtsui/identifier-cases';
 import assert = require('assert');
 import { isAbsolute, join } from 'path';
 const { O_WRONLY, O_CREAT } = constants;
