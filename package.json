@@ -2,8 +2,8 @@
     "name": "@zimtsui/lock-pid-file",
     "version": "0.0.2",
     "description": "",
-    "main": "./build/ts/index.js",
-    "types": "./build/ts/index.d.ts",
+    "main": "./build/index.js",
+    "types": "./build/index.d.ts",
     "engines": {
         "node": ">=16"
     },
@@ -16,7 +16,7 @@
         "clean": "rm -rf ./build",
         "build": "npm run build-c && npm run build-ts",
         "build-c": "node-gyp configure && node-gyp build",
-        "build-ts": "mkdir -p ./build/Release && cp -f ./types/fcntl.d.ts ./build/Release/fcntl.d.ts && tsc -b ./src/tsconfig.json",
+        "build-ts": "mkdir -p ./build/Release/ && cp -f ./types/fcntl.d.ts ./build/Release/fcntl.d.ts && tsc -b ./src/tsconfig.json",
         "install": "npm run build-c"
     },
     "author": "Zim",
