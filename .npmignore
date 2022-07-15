@@ -1,2 +1,11 @@
 # nodejs
 /node_modules
+
+# node-gyp
+/build/*
+!/build/*.js
+!/build/*.js.map
+!/build/*.d.ts
+!/build/tsconfig.tsbuildinfo
+/build/Release/*
+!/build/Release/*.d.ts
