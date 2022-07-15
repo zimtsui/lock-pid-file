@@ -4,8 +4,12 @@
     "description": "",
     "main": "./build/ts/index.js",
     "types": "./build/ts/index.d.ts",
+    "engines": {
+        "node": ">=16"
+    },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
+        "clean": "rm -rf ./build",
         "build": "npm run build-c && npm run build-ts",
         "build-c": "node-gyp configure && node-gyp build && cp -f ./types/fcntl.d.ts ./build/Release/fcntl.d.ts",
         "build-ts": "tsc -b ./src/tsconfig.json",
@@ -13,11 +17,9 @@
     },
     "author": "Zim",
     "dependencies": {
+        "@types/node": "^16.11.44",
         "identifier-cases": "github:zimtsui/identifier-cases",
         "node-addon-api": "^4.0.0",
         "node-gyp": "^8.4.1"
-    },
-    "peerDependencies": {
-        "@types/node": ">=16"
     }
 }
